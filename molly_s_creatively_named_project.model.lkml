@@ -37,7 +37,7 @@ explore: users {
 }
 
 explore: orders {
-  sql_always_where: ${created_date} >= '2017-01-01';;
+  sql_always_where: ${created_date} >= '2017-01-02';;
   join: users {
     sql_on: ${orders.user_id} = ${users.id} ;;
     relationship: many_to_one
