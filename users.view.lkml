@@ -39,6 +39,7 @@ view: users {
       time,
       date,
       week,
+      day_of_week,
       month,
       quarter,
       year
@@ -46,6 +47,11 @@ view: users {
     sql: ${TABLE}.created_at ;;
   }
 
+
+  dimension: first_day_of_week {
+    type: yesno
+    sql: ${created_day_of_week}='Monday' ;;
+  }
   dimension: email {
     type: string
     sql: ${TABLE}.email ;;

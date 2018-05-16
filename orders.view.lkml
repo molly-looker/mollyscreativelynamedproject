@@ -6,6 +6,7 @@ view: orders {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
+
   }
 
   dimension_group: created {
@@ -22,7 +23,32 @@ view: orders {
     sql: ${TABLE}.created_at ;;
   }
 
+ dimension: year1 {
+   type:  string
+  sql: EXTRACT(year from ${TABLE}.created_at)  ;;
+  html:  {{ orders.year1._value }} {{ orders.id._value }} ;;
+ }
+
+
+  parameter: label {
+    type: string
+    default_value: "2018"
+  }
+
+  dimension: quarter {
+    label: "Quarter {% parameter label %}"
+    type: number
+    sql: ${TABLE}.id ;;
+  }
+
+  dimension: customfilter {
+    type: yesno
+    sql: (${TABLE}.id = 1 or (${TABLE}.id = 2 and ${TABLE}.status = 'cancelled') or ${TABLE}.id = 3)  ;;
+  }
+
+
   dimension: status {
+    label: "Status"
     type: string
     sql: ${TABLE}.status ;;
   }
@@ -48,4 +74,14 @@ view: orders {
     type: number
     sql:  '0.03' ;;
   }
+
+  set: my_first_set {
+    fields: [
+      user_id,
+      is_complete,
+      hardcode
+    ]
+  }
+
+
 }

@@ -73,6 +73,17 @@ view: inventory_items {
   }
 
 
+  dimension: d1 {
+    type: string
+    sql: 'd1' ;;
+  }
+
+  dimension: d2 {
+    type: string
+    sql: ${d1} ;;
+    html: {% if value == "d1" %} ${expensive._value} {% else %} ${cost._value} {% endif %};;
+}
+
 
   measure: count {
     type: count

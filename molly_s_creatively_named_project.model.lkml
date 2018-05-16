@@ -11,7 +11,7 @@ datagroup: molly_datagroup {
 explore: users {
   persist_with: molly_datagroup
   view_label: "California Users"
-  fields: [ALL_FIELDS*, -user_data.id]
+
   always_filter: {
     filters: {
       field: state
@@ -37,16 +37,14 @@ explore: users {
 }
 
 explore: orders {
+  fields: [orders.my_first_set*]
 # sql_always_where: ${created_date} = ${2daysago};;
   join: users {
     sql_on: ${orders.user_id} = ${users.id} ;;
     relationship: many_to_one
+
   }
 
-  join: order_items {
-    sql_on: ${order_items.order_id} = ${orders.id} ;;
-    relationship: one_to_many
-  }
 }
 
 explore: inventory_items {
@@ -62,7 +60,10 @@ explore: error_trends {
   from: products
   view_name: products
   description: "Investigation view. Used to see the 10 events surrounding one particular event pivoted."
-  hidden: yes
+  always_filter: {filters: {
+      field: products.brand
+      value: "Allegra K"
+    }}
 
 
   }
