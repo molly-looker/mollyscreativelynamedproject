@@ -103,5 +103,4 @@ view: inventory_items {
 
   set: details {
     fields: [id, product_id]
-  }
-}
+}}

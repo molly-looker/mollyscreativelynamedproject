@@ -53,5 +53,4 @@ view: order_items {
     sql:  ${TABLE}.sale_price ;;
     drill_fields: [orders.id, order_items.sale_price]
   }
-
 }
