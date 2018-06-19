@@ -69,6 +69,10 @@ explore: error_trends {
   }
 
 
+explore: users2 {
+  view_name: users
+}
+
 explore: extends_test {
   extends: [error_trends]
   from: products

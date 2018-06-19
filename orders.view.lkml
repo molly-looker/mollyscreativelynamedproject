@@ -23,6 +23,13 @@ view: orders {
     sql: ${TABLE}.created_at ;;
   }
 
+
+  parameter: testparam {
+    type: unquoted
+    suggest_explore: users
+    suggest_dimension: users.gender
+  }
+
  dimension: year1 {
    type:  string
   sql: EXTRACT(year from ${TABLE}.created_at)  ;;
@@ -60,7 +67,7 @@ view: orders {
 
   dimension: user_id {
     type: number
-    hidden: yes
+    #hidden: yes
     sql: ${TABLE}.user_id ;;
     drill_fields: [users.first_name, users.last_name]
   }
@@ -68,6 +75,16 @@ view: orders {
   measure: count {
     type: count
     drill_fields: [id, users.name, order_items.count]
+  }
+
+  measure: count2 {
+    type: count
+    drill_fields: [my_first_set*]
+    html:
+    <div>
+    <p style="font-size: 14px;font-weight:600"><a style="color: black" href= {{ value }} target="new" >{{ rendered_value }}</a></p>
+    </div>
+    ;;
   }
 
   measure: hardcode {

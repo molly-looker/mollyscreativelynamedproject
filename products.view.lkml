@@ -29,6 +29,15 @@ view: products {
 
     }
 
+  dimension: subject_group {
+    type: string
+    case: {
+      when: {
+        sql: (${TABLE}.department) LIKE "men" or (${TABLE}.department) LIKE "women";;
+        label: "NA"
+      }}
+      }
+
     dimension: department {
       type: string
       sql: ${TABLE}.department ;;
@@ -57,7 +66,7 @@ view: products {
     measure: count {
       type: count
       drill_fields: [id, item_name]
-    }
+      }
 
 
     set: detail {
