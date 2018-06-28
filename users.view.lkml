@@ -21,6 +21,7 @@ view: users {
     sql: ${TABLE}.age ;;
   }
 
+
   dimension: age_tier {
     label: "Age Groupings"
     description: "Ages by Tier"
@@ -160,7 +161,7 @@ measure: count_subtract {
     fields: [
       id,
       name,
-      events.count,
+events.count,
       orders.count,
       user_data.count
     ]
