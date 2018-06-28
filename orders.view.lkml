@@ -9,6 +9,11 @@ view: orders {
 
   }
 
+  dimension: fakeshiz {
+	type: number
+	sql: 1 ;;
+ }
+
   dimension_group: created {
     type: time
     timeframes: [

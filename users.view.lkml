@@ -14,6 +14,8 @@ view: users {
     sql: ${TABLE}.id ;;
   }
 
+
+
   dimension: age {
     type: number
     sql: ${TABLE}.age ;;
@@ -31,7 +33,12 @@ view: users {
   dimension: city {
     type: string
     sql: ${TABLE}.city ;;
-  }
+    html: {% if  users.age._value  < 20 %}
+    <p style="background-color: yellow">{{ value }}</p>
+    {% else %}
+    {{ value }}
+    {% endif %} ;;
+    }
 
   dimension: country {
     type: string
