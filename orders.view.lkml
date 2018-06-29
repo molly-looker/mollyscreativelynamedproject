@@ -13,6 +13,11 @@ view: orders {
 	sql: 1 ;;
  }
 
+
+dimension: fakeshiz3 {
+	type: number
+	sql: 3 ;;
+ }
   dimension_group: created {
     type: time
     timeframes: [
