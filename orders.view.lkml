@@ -12,6 +12,12 @@ view: orders {
   type: number
   sql: 1 ;;
  }
+ 
+  dimension: fakeshiz2 {
+	type: number
+	sql: 2 ;;
+ }
+
 
   dimension_group: created {
     type: time
