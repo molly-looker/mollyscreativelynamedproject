@@ -1,7 +1,7 @@
 connection: "thelook"
 label: "The Look"
 include: "*.view.lkml"
-include: "*.dashboard.lookml"
+#include: "*.dashboard"
 
 datagroup: molly_datagroup {
   max_cache_age: "4 hour"
@@ -34,10 +34,16 @@ explore: users {
 
   }
 
+  join: testpdt{
+    type:  left_outer
+    sql_on:  ${testpdt.id}=${users.id} ;;
+    relationship: one_to_one
+  }
+
 }
 
 explore: orders {
-  fields: [orders.my_first_set*]
+  #fields: [orders.my_first_set*]
 # sql_always_where: ${created_date} = ${2daysago};;
   join: users {
     sql_on: ${orders.user_id} = ${users.id} ;;

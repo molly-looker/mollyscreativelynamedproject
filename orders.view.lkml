@@ -2,15 +2,15 @@ view: orders {
   sql_table_name: demo_db.orders ;;
 
   dimension: id {
-    primary_key: yes
+    #primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
 
   }
 
   dimension: fakeshiz {
-	type: number
-	sql: 1 ;;
+  type: number
+  sql: 1 ;;
  }
 
   dimension_group: created {
@@ -91,9 +91,20 @@ view: orders {
     ;;
   }
 
+  measure: count_with_0 {
+    type: number
+    #value_format: "#"
+    # drill_fields: [id, streams.id, encounters.id]
+    sql: COALESCE(${count}, 0);;
+  }
+
   measure: hardcode {
     type: number
     sql:  '0.03' ;;
+  }
+
+  measure: sum {
+    type:  sum
   }
 
   set: my_first_set {
