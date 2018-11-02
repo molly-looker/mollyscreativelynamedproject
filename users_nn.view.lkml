@@ -17,6 +17,21 @@ view: users_nn {
     sql: ${TABLE}.last_name ;;
   }
 
+  dimension_group: created {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      day_of_week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.created_at ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [id, first_name, last_name]

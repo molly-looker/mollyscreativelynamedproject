@@ -74,6 +74,12 @@ explore: error_trends {
 
   }
 
+  explore: users_nn {
+    view_name: users_nn
+    sql_always_where: ${users_nn.created_date}<CURRENT_DATE ;;
+  }
+
+
 
 explore: users2 {
   view_name: users

@@ -14,11 +14,23 @@ view: users {
     sql: ${TABLE}.id ;;
   }
 
+parameter: test {
+  type:  number
+  suggest_explore: onetwothree
+  suggest_dimension: onetwothree.one
+}
+
+
+parameter: test2 {
+  type:  number
+}
 
 
   dimension: age {
     type: number
     sql: ${TABLE}.age ;;
+    suggest_explore: users_suggest
+    suggest_dimension: age
   }
 
 
