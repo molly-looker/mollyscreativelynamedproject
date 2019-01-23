@@ -1,7 +1,7 @@
 view: onetwothree {
   derived_table: {
     sql:SELECT
-           1 as one, 2 as two, 3 as three;;
+           12345678 as one, 23456789 as two, 34567890 as three;;
           }
 
   dimension: one {
@@ -19,8 +19,11 @@ view: onetwothree {
     sql:  ${TABLE}.three ;;
   }
 
+#test
 
-
+measure: count {
+  type:  count
+}
 
 
 

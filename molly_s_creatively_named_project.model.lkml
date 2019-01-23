@@ -7,6 +7,11 @@ datagroup: molly_datagroup {
   max_cache_age: "4 hour"
 }
 
+datagroup: mollyorders {
+  sql_trigger: select max(DATE(CONVERT_TZ(orders.created_at ,'UTC','America/New_York')))  from orders  ;;
+  max_cache_age: "24 hours"
+}
+
 
 explore: users {
   persist_with: molly_datagroup

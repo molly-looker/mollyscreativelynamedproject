@@ -12,10 +12,10 @@ view: orders {
   type: number
   sql: 1 ;;
  }
- 
+
   dimension: fakeshiz2 {
-	type: number
-	sql: 2 ;;
+  type: number
+  sql: 2 ;;
  }
 
 
@@ -32,6 +32,15 @@ view: orders {
     ]
     sql: ${TABLE}.created_at ;;
   }
+
+  dimension: event_week_end_date {
+    type: string
+    view_label: "Event Day Date"
+    can_filter: no
+    sql: case when extract(dow, ${TABLE}.created_at) = 0 then to_char(date_trunc('week', ${TABLE}.created_at) + 12, 'YYYY-MM-DD')
+      else to_char(date_trunc('week', ${TABLE}.created_at) + 5, 'YYYY-MM-DD') end ;;
+  }
+
 
 
   parameter: testparam {
@@ -107,6 +116,14 @@ view: orders {
   measure: hardcode {
     type: number
     sql:  '0.03' ;;
+  }
+
+  measure: filtered_count {
+    type:  count
+    filters: {
+      field: id
+      value: ">18800 and <18803"
+    }
   }
 
   measure: sum {
