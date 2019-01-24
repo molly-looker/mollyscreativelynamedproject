@@ -25,6 +25,10 @@ measure: count {
   type:  count
 }
 
+  measure: sum {
+    type:  sum
+  }
+
 
 
     }
